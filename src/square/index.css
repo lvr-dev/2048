@@ -2,6 +2,7 @@
     float: left;
     position:relative;
     color: #fff;
+    border: solid 1px #010101;
 }
 
 .inner-square {
@@ -26,7 +27,6 @@
 @media screen and (min-width: 900px) {
 
   .base-square {
-    border: solid 1px #010101;
     width: 164px;
     height: 164px;
     margin: 2px;
@@ -41,11 +41,13 @@
 }
 
 .color-2 {
-  background-color: #1f10b8;
+  background-color: #bbe5efe7;
+  color: #2a2a2a;
 }
 
 .color-4 {
-  background-color: #210df3;
+  background-color: #7db0bdc4;
+  color: #2a2a2a;
 }
 
 .color-8 {
@@ -53,7 +55,7 @@
 }
 
 .color-16 {
-  background-color: #345ef1;
+  background-color: #374ca9;
 }
 
 .color-32 {
