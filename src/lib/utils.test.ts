@@ -21,4 +21,16 @@ describe('traverseArray', () => {
     const result = traverseArray(testValues.array4);
     expect(result).toEqual(testValues.array4Expected);
   });
+
+  test('four adjacent equal values added, moved to end', () => {
+    const result = traverseArray(testValues.array5);
+    console.log('result', result);
+    expect(result).toEqual(testValues.array5Expected);
+  });
+
+  test('two adjacent equal values added, moved to end', () => {
+    const result = traverseArray(testValues.array6);
+    console.log('result', result);
+    expect(result).toEqual(testValues.array6Expected);
+  });
 })
