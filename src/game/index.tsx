@@ -1,16 +1,24 @@
 import { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-import { getRandomFromLength, getRandomFromTwo } from '../lib/utils';
-import { BaseSquares, NonActiveClasses } from '../lib/constants'; 
+import { 
+  getKeyRandomAvailable,
+  getRandomFromLength, 
+  getRandomFromTwo, 
+  calculateGrid 
+} from '../lib/utils';
+import { BaseSquares } from '../lib/constants'; 
 import { GameControl } from '../gamecontrol';
 import { Board } from '../board';
+import { SquareValues } from '../lib/types';
+
+const cloneDeep = require('lodash/cloneDeep');
 
 export default function Game() {
 
   const [running, setRunning] = useState(false);
   const [score, setScore] = useState(0);
-  const [grid, setGrid] = useState(initiateGrid);
+  const [grid, setGrid] = useState(initiateGrid());
 
   return (<div className="wrapper">
       <div className="score-banner">
@@ -23,7 +31,7 @@ export default function Game() {
       {<
       Board 
         squares={ grid }
-        onDragEnd={ dragEnd }
+        recalculate={resetGrid}
       /> }
     </div>)
 
@@ -31,21 +39,43 @@ export default function Game() {
     const randomSquareNumber = getRandomFromLength(16);
     const randomFromTwo = getRandomFromTwo();
     return BaseSquares.map(square => {
-      if (square.id === randomSquareNumber) {
+      if (square.key === randomSquareNumber) {
         square.value = randomFromTwo;
       }
       return square;
     })
   }
 
-  function dragEnd(event: React.MouseEvent, clientX: number, clientY: number): void {
-    console.log('drag end', clientX, clientY);
+
+  function setNewValue(squares: SquareValues[]) {
+    const randomKey = getKeyRandomAvailable(squares);
+    if (randomKey !== 0) {
+      return squares.map(square => {
+        if (square.key === randomKey) {
+          square.value = getRandomFromTwo();
+        }
+        return square;
+      });
+    }
+    setRunning(false);
+    return squares;  
   }
 
   function startGame(): void {
     setRunning(true);
-
   }
+
+  function resetGrid(direction: string): void { 
+    recalculateGrid(direction);
+  }
+
+  function recalculateGrid(direction: string) {
+    const gridClone = cloneDeep(grid);
+    const recalculatedGrid = calculateGrid(gridClone, direction);
+    setGrid(recalculatedGrid);
+    setNewValue(recalculatedGrid);
+  }
+
 }
  
 const container = document.getElementById('root')!;

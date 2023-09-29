@@ -1,4 +1,4 @@
-import { ColorValues } from './types';
+import { ColorValues, SquareValues } from './types';
 
 export const NonActiveClasses = 'inner-square hidden';
 export const ActiveClasses = 'inner-square active';
@@ -14,100 +14,99 @@ export const ColorValueClasses: ColorValues = {
   "256": 'color-256'
 }
 
-export const BaseSquares = [
+export const BaseSquares: SquareValues[] = [
   {
-    "id": 1,
+    "key": 1,
     "row": 1,
     "column": 1,
     "value": 0
   },
   {
-    "id": 2,
+    "key": 2,
     "row": 1,
     "column": 2,
     "value": 0
   },
   {
-    "id": 3,
+    "key": 3,
     "row": 1,
     "column": 3,
     "value": 0
   },
   {
-    "id": 4,
+    "key": 4,
     "row": 1,
     "column": 4,
     "value": 0
   },
   {
-    "id": 5,
+    "key": 5,
     "row": 2,
     "column": 1,
     "value": 0
   },
   {
-   "id": 6,
+   "key": 6,
     "row": 2,
     "column": 2,
     "value": 0
   },
   {
-    "id": 7,
+    "key": 7,
     "row": 2,
     "column": 3,
     "value": 0
   },
   {
-    "id": 8,
+    "key": 8,
     "row": 2,
     "column": 4,
     "value": 0
   },
   {
-    "id": 9,
+    "key": 9,
     "row": 3,
     "column": 1,
     "value": 0
   },
   {
-    "id": 10,
+    "key": 10,
     "row": 3,
     "column": 2,
     "value": 0
   },
   {
-    "id": 11,
+    "key": 11,
     "row": 3,
     "column": 3,
     "value": 0
   },
   {
-    "id": 12,
+    "key": 12,
     "row": 3,
     "column": 4,
-    "value": 0,
-    "plus": false
+    "value": 0
   },
   {
-    "id": 13,
+    "key": 13,
     "row": 4,
     "column": 1,
     "value": 0
   },
   {
-    "id": 14,
+    "key": 14,
     "row": 4,
     "column": 2,
     "value": 0
   },
   {
-    "id": 15,
+    "key": 15,
     "row": 4,
     "column": 3,
     "value": 0
   },
   {
-    "id": 16,
+    "key": 16,
     "row": 4,
     "column": 4,
     "value": 0

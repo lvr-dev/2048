@@ -1,24 +1,26 @@
 import { FunctionComponent } from 'react';
-import { SquareProp } from '../lib/types';
+import { SquareProp, SquareValues } from '../lib/types';
 import './index.css';
 
 
-export const Square: FunctionComponent<SquareProp> = ({row, column, value}) => {
-  const squareClass = `color-${value} inner-square`;
+export const Square: FunctionComponent<SquareProp> = ({square, onDragStart}) => {
+  const squareClass = `color-${square.value} inner-square`;
+  
   return (
-      <div className='base-square' data-column={column} data-row={row} data-value={value}>
-          { value > 0 &&
-           <div 
-              draggable
-              className={squareClass} 
-              data-row={row} 
-              data-column={column}  
-              data-value={value}
-            >
-              <span>{value}</span>
-          </div>
-          }
+        <div 
+          draggable
+          className={squareClass} 
+          data-row={square.row} 
+          data-column={square.column}  
+          data-value={square.value}
+          onDragStart={() => drag(square)}
+        >
+          <span>{square.value}</span>
       </div>
     );
+
+  function drag(square: SquareValues): void {
+    onDragStart(square);
+  }
 }
 

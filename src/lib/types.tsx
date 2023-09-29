@@ -7,18 +7,23 @@ export interface GameState {
 }
 
 export interface BoardProps {
-  squares: SquareProp[];
-  onDragEnd: (event: React.MouseEvent, clientX: number, clientY: number) => void;
+  squares: SquareValues[];
+  recalculate: (direction: string) => void;
 }
 
 export interface ColorValues {
   [key:string]: string;
 }
 
-export interface SquareProp {
+export interface SquareValues {
+  key: number,
   row: number,
   column: number,
-  value: number
+  value: number,
+}
+export interface SquareProp {
+  square: SquareValues,
+  onDragStart: (square: SquareValues) => void;
 }
 
 export type GameControlProps = {
