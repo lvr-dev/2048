@@ -38,7 +38,6 @@ export const Board: FunctionComponent<BoardProps> = ({squares, recalculate}) => 
   )
 
   function dragEnter(square: SquareValues) {
-    console.log('drag enter');
     if (deferredCurrentSquare) {
       const direction = getMoveDirection(deferredCurrentSquare, square);
       if (direction) {

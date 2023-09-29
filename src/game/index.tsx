@@ -5,7 +5,8 @@ import {
   getKeyRandomAvailable,
   getRandomFromLength, 
   getRandomFromTwo, 
-  calculateGrid 
+  calculateGrid,
+  setInitialSquare 
 } from '../lib/utils';
 import { BaseSquares } from '../lib/constants'; 
 import { GameControl } from '../gamecontrol';
@@ -36,16 +37,8 @@ export default function Game() {
     </div>)
 
   function initiateGrid() {
-    const randomSquareNumber = getRandomFromLength(16);
-    const randomFromTwo = getRandomFromTwo();
-    return BaseSquares.map(square => {
-      if (square.key === randomSquareNumber) {
-        square.value = randomFromTwo;
-      }
-      return square;
-    })
+    return setInitialSquare(BaseSquares);
   }
-
 
   function setNewValue(squares: SquareValues[]) {
     const randomKey = getKeyRandomAvailable(squares);
@@ -57,7 +50,6 @@ export default function Game() {
         return square;
       });
     }
-    setRunning(false);
     return squares;  
   }
 

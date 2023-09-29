@@ -1,7 +1,7 @@
 import { SquareValues } from "./types";
 
 
-export const getRandomFromLength = (max: number) => Math.floor(Math.random() * max + 1);
+export const getRandomFromLength = (max: number) => Math.floor(Math.random() * max);
 
 export const getRandomFromTwo = () => (Math.random()) > 0.5 ? 2 : 4;
 
@@ -13,6 +13,19 @@ export const getKeyRandomAvailable = (grid: Array<SquareValues>): number => {
   }
   return 0;
 }
+
+export const setInitialSquare = (grid: Array<SquareValues>): SquareValues[] => {
+  const randomIndex = getRandomFromLength(16);
+  const randomFromTwo = getRandomFromTwo();
+  return grid.map((square, index) => {
+    if (index === randomIndex) {
+        square.value = randomFromTwo;
+      }
+      return square;
+  });
+}
+
+
 
 export const getSquareValues = (square: SquareValues): SquareValues => {
   const value = getRandomFromTwo();
@@ -55,29 +68,36 @@ export function traverseArray(arr: SquareValues[]): SquareValues[] {
   return moveValues(valuesAdded);
 }
 
-function addEquals(arr: SquareValues[]) {
+function addEqualsOld(arr: SquareValues[]) {
   return arr.map((item, index, elements) => {
     const next = elements[index+1];
     const previous = elements[index-1];
-    if (item.value !== 0 && next && next.value == item.value) {
+    if (item.value !== 0 && next && next.value === item.value) {
+      console.log('item value 1', item.value);
       next.value = next.value + item.value;
       item.value = previous ? previous.value : 0;
+      console.log('item value 2', item.value);
       return item;
     }
     return item;
   });
 }
 
-function moveZeroValues(arr: SquareValues[]) {
-   return arr.map((item, index, elements) => {
-      const next = elements[index+1];
-      if (item.value !== 0 && next && next.value === 0) {
-        next.value = item.value;
-        item.value = 0
+function addEquals(arr: SquareValues[]) {
+  let sum = false;
+  return arr.map((item, index, elements) => {
+    const next = elements[index+1];
+    const previous = elements[index-1];
+    if (sum === false) {
+      if (item.value !== 0 && next && next.value === item.value) {
+        next.value = next.value + item.value;
+        item.value = 0;
+        sum = true;
         return item;
-      } 
-      return item;
-    });
+      }
+    } 
+    return item;
+  });
 }
 
 function moveValues(arr: SquareValues[]) {

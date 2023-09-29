@@ -2,9 +2,9 @@
     float: left;
     position:relative;
     color: #fff;
-    margin: 2px;
+    margin: 3px;
     border-radius: 0.2rem;
-    border: solid 1px #010101;
+    background-color: #fff;
 }
 
 .inner-square {
@@ -13,6 +13,7 @@
     align-items: center;
     width: inherit;
     height: inherit;
+    border-radius: 0.2rem;
 }
 
 @media screen and (min-width: 680px) {
@@ -47,11 +48,13 @@
 }
 
 .color-2 {
-  background-color: #1f10b8;
+  background-color: #bbe5efe7;
+  color: #2a2a2a;
 }
 
 .color-4 {
-  background-color: #210df3;
+  background-color: #7db0bdc4;
+  color: #2a2a2a;
 }
 
 .color-8 {
@@ -59,7 +62,7 @@
 }
 
 .color-16 {
-  background-color: #345ef1;
+  background-color: #374ca9;
 }
 
 .color-32 {
@@ -71,7 +74,7 @@
 }
 
 .color-128 {
-  background-color: #6facf3;
+  background-color: #2463aa;
 }
 
 .color-256 {
