@@ -6,20 +6,19 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (min-width: 820px) {
+.wrapper {
+  height: 100vh;
+  margin: 0 auto;
+}
+@media screen and (min-width: 680px) {
   .wrapper {
-    width: 50%;
-    max-width: 50%;
-    height: 100vh;
-    margin: 0 auto;
+    width: 680px;
   }
 }
 
-@media only screen and (max-width: 810px) and (orientation: portrait) {
+@media screen and (min-width: 320px) and (max-width: 679px) {
   .wrapper {
-    width: 100%;
-    height: 100vh;
-    margin: 0 auto;
+    width: 320px;
   }
 }
 
